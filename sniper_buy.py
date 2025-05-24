@@ -1,5 +1,4 @@
 from web3 import Web3
-from web3.middleware import geth_poa_middleware
 from dotenv import load_dotenv
 import os
 import json
@@ -14,7 +13,6 @@ RPC_URL = os.getenv("RPC_URL")
 
 # Connexion à la BSC
 web3 = Web3(Web3.HTTPProvider(RPC_URL))
-web3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
 if not web3.is_connected():
     print("❌ Connexion échouée à la blockchain.")
